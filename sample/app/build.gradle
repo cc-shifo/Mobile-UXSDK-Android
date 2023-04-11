@@ -21,10 +21,26 @@ android {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
     }
+
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('./123456.jks')
+            storePassword '123456'
+        }
+    }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     dexOptions {
@@ -83,6 +99,7 @@ dependencies {
          * Note that Google Play Store does not allow APKs that include this library.
          */
         // exclude group: 'com.amap.api'
+        exclude module: 'library-anti-distortion'
     })
     compileOnly ('com.dji:dji-sdk-provided:4.15.1')
 
