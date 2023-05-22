@@ -1,0 +1,9 @@
+坐标系id
+1、ESPG
+https://epsg.io/transform#s_srs=4326&t_srs=3857&x=NaN&y=NaN
+https://epsg.io/4326
+2、wkid
+https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/coordinate-systems-difference/
+3、arcgis整理的
+空间和投影坐标系id列表
+https://developers.arcgis.com/javascript/3/jshelp/ref_coordsystems.html
