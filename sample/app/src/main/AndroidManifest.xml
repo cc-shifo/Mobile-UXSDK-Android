@@ -33,7 +33,7 @@
 
         <meta-data
             android:name="com.dji.sdk.API_KEY"
-            android:value="Enter your API key here" />
+            android:value="562f1061eb4f9862ab48aa16" />
 
         <!-- Here Maps -->
         <meta-data android:name="com.here.android.maps.appid"
@@ -60,7 +60,7 @@
         <!-- AMaps -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="Enter your API key here"/>
+            android:value="343b050130c2ac94d2cc4e0c8aa2e840"/>
 
         <activity
             android:name=".MainActivity"
