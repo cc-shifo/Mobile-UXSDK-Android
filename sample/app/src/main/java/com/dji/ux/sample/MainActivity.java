@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -94,6 +95,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Popu
             Toast.makeText(getApplicationContext(),
                            key.toString() + " changed",
                            Toast.LENGTH_LONG).show();
+            if (newComponent != null) {
+                Log.d(TAG, "onComponentChange: "+ newComponent);
+            }
 
         }
 
