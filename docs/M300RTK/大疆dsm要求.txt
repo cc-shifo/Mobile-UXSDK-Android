@@ -1,0 +1,10 @@
+文件大小限制：小于等于20MB，空间精度小于10m。
+数据坐标系：wgs84坐标系
+文件格式：dsm。
+文件要求：覆盖飞行区域。
+
+https://forum.dji.com/forum.php?mod=viewthread&tid=270404&extra=page%3D1&page=1
+https://forum.dji.com/thread-270404-1-1.html
+https://www.youtube.com/watch?v=Q2fEdt21jNo
+
+

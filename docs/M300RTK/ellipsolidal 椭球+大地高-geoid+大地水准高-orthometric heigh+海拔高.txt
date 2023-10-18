@@ -1,0 +1,19 @@
+坐标系id
+1、ESPG
+https://epsg.io/transform#s_srs=4326&t_srs=3857&x=NaN&y=NaN
+https://epsg.io/4326
+2、wkid
+https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/coordinate-systems-difference/
+3、arcgis整理的
+空间和投影坐标系id列表
+https://developers.arcgis.com/javascript/3/jshelp/ref_coordsystems.html
+
+海拔高：A.M.S.L height above mean sea level - Wikipedia == orthometric heigth椭球面到兴趣点的高度。
+椭球高，有时称大地高： ellipsoidal，椭球面到兴趣点的高度。
+大地水准高或高程：geoid heigth，是从大地水准面沿法线到地球椭球体面的距离
+https://www.sciencedirect.com/science/article/pii/S2090447917300084
+https://www.researchgate.net/figure/Relationship-between-ellipsoidal-orthometric-and-geoid-heights_fig1_340030816/amp
+https://forum.dji.com/forum.php?mod=viewthread&tid=270404&extra=page%3D1&page=1
+https://forum.dji.com/thread-270404-1-1.html
+
+dsm高程是椭球高。
