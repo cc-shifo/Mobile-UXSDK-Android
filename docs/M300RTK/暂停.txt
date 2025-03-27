@@ -1,0 +1,41 @@
+纠正一下第2问题描述。根据日志显示，APP重启后纠正一下第2问题描述。根据日志显示，APP重启后执行了一次FlightControllerKey.KeyHomeLocationUsingCurrentAircraftLocation操作。
+具体来讲，在发生崩溃时，遥控器和无人机之间信号只有1格或者没有，附近区域信号不怎么稳定；在APP重启后，无人机继续飞，遥控器与无人机取得联系，飞手点击APP继续进入APP之前的航线飞行界面。
+当无人机继续飞，遥控器与无人机取得联系，且APP在重启过程中运行到FlightControllerKey.KeyHomeLocationUsingCurrentAircraftLocation这一行这几个条件同时满足时，执行FlightControllerKey.KeyHomeLocationUsingCurrentAircraftLocation设置home点操作。
+这里，想咨询一下关于Home点的设置和可设置时机问题：
+1）比如这里的无人机在天上执行航线任务时，能否设置航点？例如用户点击按键，按键里调用FlightControllerKey.KeyHomeLocationUsingCurrentAircraftLocation
+2）比如这里的无人机在天上执行航线任务时，能否设置航点？例如用户点击按键想将home位置设置成遥控器当前，此时home的设置对遥控器位置有什么限制没有？我的印象之中好像是，如果将home点设置成遥控器当前位置，这个设置操作对遥控器与飞机位置之间的距离有要求。
+3）
+
+
+根据后续验证。现象和结果如下：
+一、现象
+1、自动模式
+场景一
+1）规划航线，修改完飞行高度；
+2）在无论是保存或不保存情况下，打开激光雷达设置界面，观察点频参数；
+3）点频参数界面没有根据公式进行更新；
+
+场景二
+1）同场景一第1~2步的步骤；
+2）手动控制自动模式开关；打开手动模式，点频参数显示正常参数；
+3）关闭手动模式，点频参数符合公式计算规则；
+
+场景三
+1）同场景一第1~2步的步骤；
+2）关闭激光雷达参数界面；
+3）如果没有保存航线，对航线进行保存；
+4）在航线规划界面点击开始起飞按键，进入准备起飞流程。
+5）上传完航线给激光雷达，关闭航点检查列表界面，退回到航线规划界面；
+6）打开激光雷达设置界面，发现点频界面显示的内容符合公式计算规则。
+7）通过调试手段，观察在自动设置过程中，传递给固件的参数正常，固件正常响应。
+8）退出航线规划界面，或退出APP后重新打开激光雷达设置界面，观察自动模式下点频参数正常（显示变化之后的参数）
+
+
+
+二、结果
+应该是场景2的现象。在自动模式下，点频显示没有更新，但最终作业时传给固件点频的逻辑没有问题。
+原因是，APP是已固件端参数为准，然后只是在用户手动控制开关时才更新点频界面。在打开设置点频界面时，显示的是固件端参数。
+
+2024-04-16 10:03:59.037 4433-4433/com.zhd.hiair I/ExecutingInfo: onMissionStateUpdate: READY(line:2)
+2024-04-16 10:03:59.038 4433-4433/com.zhd.hiair I/PauseResumeWidget: PauseResumeWidget onMissionStateUpdate: READY(line:109)
+2024-04-16 10:03:59.038 4433-4433/com.zhd.hiair I/PauseResumeWidget: onMissionStateUpdate pauseMission error: ErrorImp{errorType='WAYPOINT', errorCode='MISSION_CONTROL_STARTED_NO_IN_RUNNING', innerCode='-4006', description='null', hint=''}(line:196)
